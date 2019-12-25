@@ -329,6 +329,7 @@ class Mixture(ModelEM, ModelGibbsSampling, ModelMeanField):
 
         # mixture weights
         self.gating.max_likelihood(None, [l.expectations for l in self.labels_list])
+        return self.log_likelihood()
 
     @property
     def num_parameters(self):

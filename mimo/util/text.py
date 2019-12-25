@@ -22,7 +22,7 @@ def progprint_xrange(*args, **kwargs):
     return progprint(xr, total=len(xr), **kwargs)
 
 
-def progprint(iterator, total=None, perline=25, show_times=True):
+def progprint(iterator, total=None, perline=25, show_times=True, show_summary=False):
     times = []
     idx = 0
     if total is not None:
@@ -53,6 +53,6 @@ def progprint(iterator, total=None, perline=25, show_times=True):
         idx += 1
         sys.stdout.flush()
     print('')
-    if show_times and len(times) > 0:
+    if show_summary and len(times) > 0:
         total = sec2str(seconds=np.sum(times))
         print('%7.2fsec avg, %s total\n' % (np.mean(times), total))
